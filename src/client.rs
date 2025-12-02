@@ -76,7 +76,6 @@ macro_rules! register_plugin {
             runtime_path: "::river_sdk::wit_bindgen::rt", 
         });
 
-        // 2. Реализуем мост между WIT и SDK
         struct SdkBridge {
             inner: ::std::cell::RefCell<Box<dyn $crate::client::Filter>>,
         }
