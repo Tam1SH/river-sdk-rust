@@ -1,4 +1,4 @@
-🚀 Quick Start
+# 🚀 Quick Start
 
 ```rust
 use river_sdk::{register_plugin, client::{Filter, Config}};
