@@ -1,0 +1,2 @@
+[overrides]
+"river:types" = { path = "./wit/common/types.wit" }

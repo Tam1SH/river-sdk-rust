@@ -1,0 +1,5 @@
+package river:client@0.1.0;
+
+world plugin {
+    export river:types/filter-factory@0.1.0;
+}
