@@ -71,6 +71,8 @@ definitions {
         plugin {
             name "example-plugin" // Namespace for this module
             load path="/path/to/target/wasm32-wasip2/release/my_plugin.wasm"
+            # or even
+            # load url="http://example.com/my_plugin.wasm"
         }
     }
 }
