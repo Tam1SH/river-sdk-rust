@@ -224,6 +224,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "wasm-module"
+version = "0.1.0"
+dependencies = [
+ "river_sdk",
+]
+
+[[package]]
 name = "wasmparser"
 version = "0.241.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

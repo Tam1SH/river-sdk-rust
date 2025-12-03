@@ -1,33 +1,5 @@
 # 🚀 Quick Start
 
-```rust
-use river_sdk::{register_plugin, client::{Filter, Config}};
-
-struct MyFilter {
-    name: String,
-}
-
-impl MyFilter {
-    pub fn new(cfg: Config) -> Self {
-        Self {
-            name: cfg.get("name").cloned().unwrap_or("unknown".into()),
-        }
-    }
-}
-
-impl Filter for MyFilter {
-
-    fn on_request(&mut self) -> Result<(), String> {
-        println!("Filter {} handling request", self.name);
-        Ok(())
-    }
-}
-
-register_plugin!(
-    "my_filter" => MyFilter::new
-);
-```
-
 # 🛠️ Prerequisites & Setup
 River SDK leverages the modern WASI Preview 2 standard. To compile your plugins, you need a recent Rust toolchain.
 ## 1. Install the Target
