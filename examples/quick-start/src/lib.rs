@@ -1,4 +1,4 @@
-use river_sdk::{client::{Config, Filter, FilterType}, register_plugin};
+use motya_sdk::{client::{Config, Filter, FilterType}, register_plugin};
 
 
 struct MyFilter {

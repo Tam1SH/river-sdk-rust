@@ -1,2 +1,2 @@
 [overrides]
-"river:types" = { path = "./wit/common/types.wit" }
+"motya:types" = { path = "./wit/common/types.wit" }

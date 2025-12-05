@@ -2,7 +2,7 @@
 members = ["examples/quick-start"]
 
 [package]
-name = "river_sdk"
+name = "motya_sdk"
 version = "0.1.0"
 edition = "2024"
 

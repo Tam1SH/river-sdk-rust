@@ -8,4 +8,4 @@ crate-type = ["cdylib"]
 name = "request_filter"
 
 [dependencies]
-river_sdk = { path = "../.." }
+motya_sdk = { path = "../.." }

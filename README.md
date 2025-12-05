@@ -1,6 +1,6 @@
 # 🚀 Quick Start
 ```rust
-use river_sdk::{client::{Config, Filter, FilterType}, register_plugin};
+use motya_sdk::{client::{Config, Filter, FilterType}, register_plugin};
 
 
 struct MyFilter {
@@ -51,7 +51,7 @@ register_plugin!(
 );
 ```
 # 🛠️ Prerequisites & Setup
-River SDK leverages the modern WASI Preview 2 standard. To compile your plugins, you need a recent Rust toolchain.
+Motya SDK leverages the modern WASI Preview 2 standard. To compile your plugins, you need a recent Rust toolchain.
 ## 1. Install the Target
 Rust 1.82+ supports the native wasm32-wasip2 target. Add it via rustup:
 ```bash
@@ -73,18 +73,18 @@ The resulting file will be located at `target/wasm32-wasip2/release/your_plugin_
 *See the [wit-bindgen](https://github.com/bytecodealliance/wit-bindgen) repository for further information.*
 
 # ⚙️ Configuration & Running
-Once you have your .wasm file, you need to configure River to load it. River uses KDL for configuration.
+Once you have your .wasm file, you need to configure Motya to load it. Motya uses KDL for configuration.
 
  - 1. Define the Plugin: In the definitions block, map a name to your .wasm file path.
  - 2. Use the Chain: In your service connectors, reference the filter using the format "plugin_name.filter_name".
 
-Example `river.kdl`:
+Example `motya.kdl`:
 ```kdl
 system {
     threads-per-service 8
     daemonize #false 
-    pid-file "/tmp/river.pidfile"
-    upgrade-socket "/tmp/river-upgrade.sock"
+    pid-file "/tmp/motya.pidfile"
+    upgrade-socket "/tmp/motya-upgrade.sock"
 }
 
 definitions {
@@ -116,8 +116,8 @@ services {
     }
 }
 ```
-# 🚀 Running River
+# 🚀 Running Motya
 Start the server pointing to your configuration file:
 ```bash
-river -- config-kdl=/path/to/river.kdl
+motya -- config-kdl=/path/to/motya.kdl
 ```

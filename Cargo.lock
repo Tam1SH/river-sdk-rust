@@ -90,6 +90,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273"
 
 [[package]]
+name = "motya_sdk"
+version = "0.1.0"
+dependencies = [
+ "wit-bindgen",
+]
+
+[[package]]
 name = "prettyplease"
 version = "0.2.37"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -115,13 +122,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a338cc41d27e6cc6dce6cefc13a0729dfbb81c262b1f519331575dd80ef3067f"
 dependencies = [
  "proc-macro2",
-]
-
-[[package]]
-name = "river_sdk"
-version = "0.1.0"
-dependencies = [
- "wit-bindgen",
 ]
 
 [[package]]
@@ -227,7 +227,7 @@ dependencies = [
 name = "wasm-module"
 version = "0.1.0"
 dependencies = [
- "river_sdk",
+ "motya_sdk",
 ]
 
 [[package]]

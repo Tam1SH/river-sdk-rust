@@ -68,20 +68,20 @@ macro_rules! register_plugin {
         ),+ $(,)? 
     ) => {
         
-        fn __river_auto_generated_init(reg: &mut $crate::client::FilterRegistry) {
+        fn __motya_auto_generated_init(reg: &mut $crate::client::FilterRegistry) {
             $(
                 reg.add_filter($name, $kind, $constructor);
             )*
         }
 
-        $crate::register_plugin!(__river_auto_generated_init);
+        $crate::register_plugin!(__motya_auto_generated_init);
     };
 
     ($init_func:expr) => {
         
         $crate::wit_bindgen::generate!({
             inline: r#"
-package river:proxy;
+package motya:proxy;
 
 interface logger {
     info: func(msg: string);
@@ -121,7 +121,7 @@ world app {
 }
             "#,
             
-            runtime_path: "::river_sdk::wit_bindgen::rt", 
+            runtime_path: "::motya_sdk::wit_bindgen::rt", 
         });
 
         struct SdkBridge {
@@ -129,19 +129,19 @@ world app {
         }
 
         pub mod context {
-            pub fn get_path() -> String { crate::river::proxy::context::get_path() }
+            pub fn get_path() -> String { crate::motya::proxy::context::get_path() }
         }
 
         pub mod logger {
-            pub fn info(msg: &str) { crate::river::proxy::logger::info(msg) }
-            pub fn error(msg: &str) { crate::river::proxy::logger::error(msg) }
-            pub fn warn(msg: &str) { crate::river::proxy::logger::warn(msg) }
-            pub fn debug(msg: &str) { crate::river::proxy::logger::debug(msg) }
+            pub fn info(msg: &str) { crate::motya::proxy::logger::info(msg) }
+            pub fn error(msg: &str) { crate::motya::proxy::logger::error(msg) }
+            pub fn warn(msg: &str) { crate::motya::proxy::logger::warn(msg) }
+            pub fn debug(msg: &str) { crate::motya::proxy::logger::debug(msg) }
         }
 
-        use exports::river::proxy::filter_factory::{Guest, GuestFilterInstance};
+        use exports::motya::proxy::filter_factory::{Guest, GuestFilterInstance};
         
-        use exports::river::proxy::filter_factory::FilterType as WitFilterType;
+        use exports::motya::proxy::filter_factory::FilterType as WitFilterType;
 
         impl GuestFilterInstance for SdkBridge {
             fn on_request(&self) -> Result<(), String> {
@@ -160,7 +160,7 @@ world app {
         impl Guest for PluginMain {
             type FilterInstance = SdkBridge;
             
-            fn create(name: String, config: Vec<(String, String)>) -> Result<Option<(crate::exports::river::proxy::filter_factory::FilterInstance, WitFilterType)>, String> {
+            fn create(name: String, config: Vec<(String, String)>) -> Result<Option<(crate::exports::motya::proxy::filter_factory::FilterInstance, WitFilterType)>, String> {
                 
                 let registry = $crate::client::_init_registry($init_func);
                 let registry = registry.lock().unwrap();
@@ -175,7 +175,7 @@ world app {
                         $crate::client::FilterType::Filter => WitFilterType::Filter,
                     };
 
-                    let instance = crate::exports::river::proxy::filter_factory::FilterInstance::new(
+                    let instance = crate::exports::motya::proxy::filter_factory::FilterInstance::new(
                         SdkBridge { 
                             inner: ::std::cell::RefCell::new(factory(cfg_map)) 
                         }
